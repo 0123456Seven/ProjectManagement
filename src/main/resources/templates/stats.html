@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчеты</title>
+    <link rel="stylesheet" th:href="@{static/styles/stats.css}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="user-profile">
+                <span class="user-name">user</span>
+                <a href="#" class="profile-link">
+                    <img class="profile-pic" th:href="@{static/images/man-silhouette.jpg}">
+                </a>
+            </div>
+        </header>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Задачи</a></li>
+                <li><a href="#">Отчеты</a></li>
+                <li><a href="#">Сотрудники</a></li>
+            </ul>
+        </nav>
+        <main class="main">
+            <section class="task-column completed">
+                <h2>Завершено</h2>
+                <p>20 задач</p>
+            </section>
+            <section class="task-column overdue">
+                <h2>Просроченные</h2>
+                <p>5 задач</p>
+            </section>
+            <section class="task-column in-progress">
+                <h2>В работе</h2>
+                <p>10 задач</p>
+            </section>
+            <section class="task-column under-review">
+                <h2>На проверке</h2>
+                <p>3 задачи</p>
+            </section>
+        </main>
+        <footer class="footer">
+            Футер
+        </footer>
+    </div>
+</body>
+</html>

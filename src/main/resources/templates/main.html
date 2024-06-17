@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи</title>
+    <link rel="stylesheet" th:href="@{static/styles/main.css}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="user-profile">
+                <span class="user-name">marsel2002</span>
+                <a href="#" class="profile-link">
+                    <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
+                </a>
+            </div>
+        </header>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Проекты</a></li>
+                <li><a href="#">Статистика</a></li>
+            </ul>
+        </nav>
+        <main class="main">
+            <section class="task-column in-progress">
+                <h2>В работе</h2>
+                <ul class="task-list">
+                    <li class="task">
+                        <a href="task-details.html" class="task-link">
+                            <div class="task-header">
+                                <span class="task-user">ivan712</span>
+                            </div>
+                            <div class="task-body">
+                                <span class="task-title">Верстка сайта</span>
+                            </div>
+                            <div class="task-footer">
+                                <span class="task-date">2024-05-29</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- Добавьте другие задачи здесь -->
+                </ul>
+            </section>
+            <section class="task-column under-review">
+                <h2>На проверке</h2>
+                <ul class="task-list">
+                    <li class="task">
+                        <a href="task-details.html" class="task-link">
+                            <div class="task-header">
+                                <span class="task-user">vasya723</span>
+                            </div>
+                            <div class="task-body">
+                                <span class="task-title">Протестировать api</span>
+                            </div>
+                            <div class="task-footer">
+                                <span class="task-date">2024-05-29</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- Добавьте другие задачи здесь -->
+                </ul>
+            </section>
+            <section class="task-column completed">
+                <h2>Завершено</h2>
+                <ul class="task-list">
+                    <li class="task">
+                        <a href="task-details.html" class="task-link">
+                            <div class="task-header">
+                                <span class="task-user">dima234</span>
+                            </div>
+                            <div class="task-body">
+                                <span class="task-title">Спроектировать сервис по доставке еды</span>
+                            </div>
+                            <div class="task-footer">
+                                <span class="task-date">2024-05-29</span>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- Добавьте другие задачи здесь -->
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;"></div>
+                </div>
+                <span class="progress-percentage">75%</span>
+            </div>
+            <div class="project-name">
+                Разработка приложения для управления проектами
+            </div>
+            <div class="developer-info">
+                Разработчик: Багаутдинов Марсель
+            </div>
+        </footer>
+        
+    </div>
+</body>
+</html>

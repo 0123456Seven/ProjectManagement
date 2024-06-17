@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1F1F24;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1F1F24;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #1F1F24;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    color: white;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.profile-link {
+    display: inline-block;
+}
+
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.nav {
+    background: #1F1F24;
+    border-bottom: 1px solid white;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    flex-shrink: 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav ul li {
+    display: inline;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    transition: color 0.3s ease;
+    color: #FFFFFF; /* Белый цвет при наведении */
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    background: #1F1F24;
+}
+
+.task-column {
+    flex: 1;
+    background-color: #1F1F24;
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-column h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #DFDFE0;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.task {
+    margin-bottom: 15px;
+}
+
+.task-link {
+    display: block;
+    text-decoration: none;
+    background-color: #2E2E36;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-link:hover {
+    border-color: #888;
+    box-shadow: 0 0 10px rgba(136, 136, 136, 0.5);
+}
+
+.task-header, .task-body, .task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-header {
+    font-size: 12px;
+    color: #DFDFE0;
+}
+
+.task-body {
+    font-size: 16px;
+    color: #DFDFE0;
+    margin: 5px 0;
+}
+
+.task-footer {
+    font-size: 12px;
+    color: #888;
+}
+
+.footer {
+    border-top: 1px solid white;
+    background: #1F1F24;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    flex-shrink: 0;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid white;
+    background: #1F1F24;
+    color: white;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 100px;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.progress-percentage {
+    font-size: 12px;
+    color: #DFDFE0;
+}
+
+.project-name {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+    color: #DFDFE0;
+}
+
+.developer-info {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+}
+
+
+.completed {
+    border-color: #A0D061; /* Зеленый цвет для "Завершено" */
+}
+
+.completed:hover {
+    border-color: #C5E1A5; /* Светло-зеленый цвет при наведении */
+    box-shadow: 0 0 15px rgba(160, 208, 97, 0.5);
+}
+
+.overdue {
+    border-color: #E57373; /* Красный цвет для "Просроченные" */
+}
+
+.overdue:hover {
+    border-color: #EF9A9A; /* Светло-красный цвет при наведении */
+    box-shadow: 0 0 15px rgba(229, 115, 115, 0.5);
+}
+
+.in-progress {
+    border-color: #FDB634; /* Оранжевый цвет для "В работе" */
+}
+
+.in-progress:hover {
+    border-color: #FFD166; /* Светло-оранжевый цвет при наведении */
+    box-shadow: 0 0 15px rgba(253, 182, 52, 0.5);
+}
+
+.under-review {
+    border-color: #2196F3; /* Синий цвет для "На проверке" */
+}
+
+.under-review:hover {
+    border-color: #64B5F6; /* Светло-синий цвет при наведении */
+    box-shadow: 0 0 15px rgba(33, 150, 243, 0.5);
+}
