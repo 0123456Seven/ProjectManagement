@@ -6,17 +6,19 @@
 
 body {
     font-family: 'JetBrains Mono', monospace;
+    background-color: #1F1F24;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #1F1F24;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 900px;
     min-height: 100vh;
     background-color: #1F1F24;
 }
@@ -81,85 +83,98 @@ body {
 
 .nav ul li a:hover {
     transition: color 0.3s ease;
-    color: #FFFFFF; /* Белый цвет при наведении */
+    color: #64B5F6;
 }
 
 .main {
     display: flex;
     flex: 1;
-    padding: 20px;
-    background: #1F1F24;
-}
-
-.task-column {
-    flex: 1;
-    background-color: #1F1F24;
-    margin: 0 10px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.task-column h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #DFDFE0;
-    border-bottom: 2px solid;
-    padding-bottom: 10px;
-}
-
-.task-list {
-    list-style-type: none;
-    padding: 0;
-    text-decoration: none;
-}
-
-.task {
-    margin-bottom: 15px;
-}
-
-.task-link {
-    display: block;
-    text-decoration: none;
-    background-color: #2E2E36;
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 10px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.task-link:hover {
-    border-color: #888;
-    box-shadow: 0 0 10px rgba(136, 136, 136, 0.5);
-}
-
-.task-header, .task-body, .task-footer {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
-.task-header {
-    font-size: 12px;
-    color: #DFDFE0;
+.content {
+    width: 100%;
+    background-color: #3C3C44;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.task-body {
-    font-size: 16px;
-    color: #DFDFE0;
-    margin: 5px 0;
+.task-details h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
 }
 
-.task-footer {
-    font-size: 12px;
-    color: #888;
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
 }
 
-/* Остальные стили остаются без изменений */
+select {
+    padding: 5px;
+    background-color: #3C3C44;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45A049;
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+strong {
+    color: white;
+}
+
+.task-user {
+    color: #64B5F6;
+    text-decoration: none;
+}
+
+.task-user:hover {
+    text-decoration: underline;
+}
+
+.status {
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.в_работе {
+    color: #FDB634;
+}
+
+.на_проверке {
+    color: #2196F3;
+}
+
+.Завершено {
+    color: #A0D061;
+}
 
 .footer {
     padding: 20px;
@@ -207,41 +222,3 @@ body {
     background-color: #1F1F24; /* Цвет кнопки при наведении */
 }
 
-
-
-
-.completed {
-    border-color: #A0D061; /* Зеленый цвет для "Завершено" */
-}
-
-.completed:hover {
-    border-color: #C5E1A5; /* Светло-зеленый цвет при наведении */
-    box-shadow: 0 0 15px rgba(160, 208, 97, 0.5);
-}
-
-.overdue {
-    border-color: #E57373; /* Красный цвет для "Просроченные" */
-}
-
-.overdue:hover {
-    border-color: #EF9A9A; /* Светло-красный цвет при наведении */
-    box-shadow: 0 0 15px rgba(229, 115, 115, 0.5);
-}
-
-.in-progress {
-    border-color: #FDB634; /* Оранжевый цвет для "В работе" */
-}
-
-.in-progress:hover {
-    border-color: #FFD166; /* Светло-оранжевый цвет при наведении */
-    box-shadow: 0 0 15px rgba(253, 182, 52, 0.5);
-}
-
-.under-review {
-    border-color: #2196F3; /* Синий цвет для "На проверке" */
-}
-
-.under-review:hover {
-    border-color: #64B5F6; /* Светло-синий цвет при наведении */
-    box-shadow: 0 0 15px rgba(33, 150, 243, 0.5);
-}

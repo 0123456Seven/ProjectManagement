@@ -8,96 +8,90 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="user-profile">
-                <span class="user-name">marsel2002</span>
-                <a href="#" class="profile-link">
-                    <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
-                </a>
-            </div>
-        </header>
-        <nav class="nav">
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Проекты</a></li>
-                <li><a href="#">Статистика</a></li>
+<div class="container">
+    <header class="header">
+        <div class="user-profile">
+            <span class="user-name" th:text="${userName}">Anonymous</span>
+            <a href="#" class="profile-link">
+                <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
+            </a>
+        </div>
+    </header>
+    <nav class="nav">
+        <ul>
+            <li><a th:href="@{/main}">Dashboard</a></li>
+            <li><a href="#">Проекты</a></li>
+            <li><a href="#">Статистика</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <section class="task-column in-progress">
+            <h2>В работе</h2>
+            <ul class="task-list">
+                <li class="task" th:each="task : ${inProgressTasks}">
+                    <a th:href="@{|/tasks/details/${task.id}|}" class="task-link">
+                        <div class="task-header">
+                            <span class="task-user" th:text="${task.user.login}">user</span>
+                        </div>
+                        <div class="task-body">
+                            <span class="task-title" th:text="${task.description}">Task Title</span>
+                        </div>
+                        <div class="task-footer">
+                            <span class="task-date" th:text="${#temporals.format(task.createDate, 'dd-MM-yyyy')}">2024-05-29</span>
+                        </div>
+                    </a>
+                </li>
             </ul>
-        </nav>
-        <main class="main">
-            <section class="task-column in-progress">
-                <h2>В работе</h2>
-                <ul class="task-list">
-                    <li class="task">
-                        <a href="task-details.html" class="task-link">
-                            <div class="task-header">
-                                <span class="task-user">ivan712</span>
-                            </div>
-                            <div class="task-body">
-                                <span class="task-title">Верстка сайта</span>
-                            </div>
-                            <div class="task-footer">
-                                <span class="task-date">2024-05-29</span>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- Добавьте другие задачи здесь -->
-                </ul>
-            </section>
-            <section class="task-column under-review">
-                <h2>На проверке</h2>
-                <ul class="task-list">
-                    <li class="task">
-                        <a href="task-details.html" class="task-link">
-                            <div class="task-header">
-                                <span class="task-user">vasya723</span>
-                            </div>
-                            <div class="task-body">
-                                <span class="task-title">Протестировать api</span>
-                            </div>
-                            <div class="task-footer">
-                                <span class="task-date">2024-05-29</span>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- Добавьте другие задачи здесь -->
-                </ul>
-            </section>
-            <section class="task-column completed">
-                <h2>Завершено</h2>
-                <ul class="task-list">
-                    <li class="task">
-                        <a href="task-details.html" class="task-link">
-                            <div class="task-header">
-                                <span class="task-user">dima234</span>
-                            </div>
-                            <div class="task-body">
-                                <span class="task-title">Спроектировать сервис по доставке еды</span>
-                            </div>
-                            <div class="task-footer">
-                                <span class="task-date">2024-05-29</span>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- Добавьте другие задачи здесь -->
-                </ul>
-            </section>
-        </main>
-        <footer class="footer">
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress" style="width: 75%;"></div>
-                </div>
-                <span class="progress-percentage">75%</span>
-            </div>
-            <div class="project-name">
-                Разработка приложения для управления проектами
-            </div>
-            <div class="developer-info">
-                Разработчик: Багаутдинов Марсель
-            </div>
-        </footer>
-        
-    </div>
+        </section>
+        <section class="task-column under-review">
+            <h2>На проверке</h2>
+            <ul class="task-list">
+                <li class="task" th:each="task : ${underReviewTasks}">
+                    <a th:href="@{|/tasks/details/${task.id}|}" class="task-link">
+                        <div class="task-header">
+                            <span class="task-user" th:text="${task.user.login}">user</span>
+                        </div>
+                        <div class="task-body">
+                            <span class="task-title" th:text="${task.description}">Task Title</span>
+                        </div>
+                        <div class="task-footer">
+                            <span class="task-date" th:text="${#temporals.format(task.createDate, 'dd-MM-yyyy')}">2024-05-29</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section class="task-column completed">
+            <h2>Завершено</h2>
+            <ul class="task-list">
+                <li class="task" th:each="task : ${completedTasks}">
+                    <a th:href="@{|/tasks/details/${task.id}|}" class="task-link">
+                        <div class="task-header">
+                            <span class="task-user" th:text="${task.user.login}">user</span>
+                        </div>
+                        <div class="task-body">
+                            <span class="task-title" th:text="${task.description}">Task Title</span>
+                        </div>
+                        <div class="task-footer">
+                            <span class="task-date" th:text="${#temporals.format(task.createDate, 'dd-MM-yyyy')}">2024-05-29</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="project-name">
+            Разработка приложения для управления проектами
+        </div>
+        <a href="/tasks/create" class="create-task-button">+</a>
+        <div class="developer-info">
+            Разработчик: Багаутдинов Марсель
+        </div>
+    </footer>
+
+
+
+</div>
 </body>
 </html>

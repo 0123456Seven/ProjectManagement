@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Создать задачу</title>
+  <link rel="stylesheet" th:href="@{/static/styles/create task.css}">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="user-profile">
+      <a href="#" class="profile-link">
+        <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
+      </a>
+    </div>
+  </header>
+  <nav class="nav">
+    <ul>
+      <li><a th:href="@{/main}">Dashboard</a></li>
+      <li><a href="#">Проекты</a></li>
+      <li><a href="#">Статистика</a></li>
+    </ul>
+  </nav>
+  <main class="main">
+    <div class="content">
+      <h2>Создать задачу</h2>
+      <form th:action="@{/tasks/create}" method="post">
+        <label for="description">Описание задачи:</label>
+        <input type="text" id="description" name="description" required>
+
+        <label for="userId">Пользователь:</label>
+        <select id="userId" name="userId" required>
+          <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.login}">User</option>
+        </select>
+
+        <label for="status">Статус:</label>
+        <select id="status" name="status" required>
+          <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.statusName}">Status</option>
+        </select>
+
+        <label for="projectId">Проект:</label>
+        <select id="projectId" name="projectId" required>
+          <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.projectName}">Project</option>
+        </select>
+
+        <button type="submit">Создать</button>
+      </form>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="project-name">
+      Разработка приложения для управления проектами
+    </div>
+    <a href="/tasks/create" class="create-task-button">+</a>
+    <div class="developer-info">
+      Разработчик: Багаутдинов Марсель
+    </div>
+  </footer>
+</div>
+</body>
+</html>

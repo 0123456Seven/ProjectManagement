@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали задачи</title>
+    <link rel="stylesheet" th:href="@{/static/styles/taskdetail.css}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="user-profile">
+            <span class="user-name" th:text="${user.getLogin()}">Anonymous</span>
+            <a href="#" class="profile-link">
+                <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
+            </a>
+        </div>
+    </header>
+    <nav class="nav">
+        <ul>
+            <li><a th:href="@{/main}">Dashboard</a></li>
+
+            <li><a href="#">Проекты</a></li>
+            <li><a href="#">Статистика</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <div class="content">
+            <section class="task-details">
+                <h2 th:text="${task.description}">Task Description</h2>
+                <p><strong>Создано:</strong> <span th:text="${#temporals.format(task.createDate, 'dd-MM-yyyy HH:mm')}">Дата создания</span></p>
+                <p><strong>Автор:</strong> <a th:href="@{|/user/details/${task.user.id}|}" class="task-user" th:text="${task.user.login}">Author</a></p>
+                <p><strong>Статус:</strong> <span class="status" th:text="${task.eventStatus.statusName}" th:classappend="${task.eventStatus.statusName}">Статус задачи</span></p>
+                <form action="#" th:action="@{/tasks/updateStatus}" method="post">
+                    <input type="hidden" name="taskId" th:value="${task.id}"/>
+                    <select name="status">
+                        <option value="в работе">В работе</option>
+                        <option value="на проверке">На проверке</option>
+                        <option value="завершено">Завершено</option>
+                    </select>
+                    <button type="submit">Изменить статус</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="project-name">
+            Разработка приложения для управления проектами
+        </div>
+        <a href="/tasks/create" class="create-task-button">+</a>
+        <div class="developer-info">
+            Разработчик: Багаутдинов Марсель
+        </div>
+    </footer>
+</div>
+</body>
+</html>
