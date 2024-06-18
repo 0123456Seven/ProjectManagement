@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали проекта</title>
+  <link rel="stylesheet" th:href="@{/static/styles/projectdetails.css}">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="user-profile">
+      <span class="user-name">Anonymous</span>
+      <a href="#" class="profile-link">
+        <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
+      </a>
+    </div>
+  </header>
+  <nav class="nav">
+    <ul>
+      <li><a th:href="@{/main}">Dashboard</a></li>
+      <li><a th:href="@{/projects}">Проекты</a></li>
+      <li><a th:href="@{/statistics}">Статистика</a></li>
+    </ul>
+  </nav>
+  <main class="main">
+    <div class="project-details">
+      <div class="details-text">
+        <h2 th:text="${project.projectName}">Project Name</h2>
+        <p class="in-progress">Задачи в работе: <span th:text="${inProgressTasksCount}">0</span></p>
+        <p class="under-review">Задачи на проверке: <span th:text="${underReviewTasksCount}">0</span></p>
+        <p class="completed">Задачи завершены: <span th:text="${completedTasksCount}">0</span></p>
+        <form th:action="@{|/projects/details/${project.id}/updateStatus|}" method="post">
+          <select name="statusId">
+            <option value="1">В работе</option>
+            <option value="3">Завершено</option>
+          </select>
+          <button type="submit">Изменить статус</button>
+        </form>
+        <form th:action="@{|/projects/details/${project.id}/delete|}" method="post">
+          <button type="submit" class="delete-button">Удалить проект</button>
+        </form>
+      </div>
+      <div class="chart-container">
+        <canvas id="tasksChart"></canvas>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="developer-info">
+      Разработчик: Багаутдинов Марсель
+    </div>
+  </footer>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('tasksChart').getContext('2d');
+    var tasksChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['В работе','На проверке', 'Завершены'],
+        datasets: [{
+          data: [
+            [[${inProgressTasksCount}]],
+            [[${underReviewTasksCount}]],
+            [[${completedTasksCount}]]
+          ],
+          backgroundColor: ['#FDB634', '#2196F3', '#A0D061'],
+          borderColor: ['#FDB634', '#2196F3', '#A0D061'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  });
+</script>
+</body>
+</html>

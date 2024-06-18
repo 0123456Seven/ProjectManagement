@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проекты</title>
+  <link rel="stylesheet" th:href="@{static/styles/projects.css}">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="user-profile">
+      <span class="user-name" th:text="${userName}">Anonymous</span>
+      <a href="#" class="profile-link">
+        <img th:src="@{/static/images/man-silhouette.jpg}" alt="Профиль" class="profile-pic">
+      </a>
+    </div>
+  </header>
+  <nav class="nav">
+    <ul>
+      <li><a th:href="@{/main}">Dashboard</a></li>
+      <li><a th:href="@{/projects}">Проекты</a></li>
+      <li><a th:href="@{/statistics}">Статистика</a></li>
+    </ul>
+  </nav>
+  <main class="main">
+    <div class="create-project-container">
+      <a th:href="@{/projects/create}" class="create-project-button">Создать проект</a>
+    </div>
+    <div class="project-columns">
+      <section class="project-column in-progress">
+        <h2>Проекты в работе</h2>
+        <ul class="project-list">
+          <li class="project" th:each="projectDTO : ${inProgressProjects}">
+            <a th:href="@{|/projects/details/${projectDTO.id}|}" class="project-link">
+              <div class="project-header">
+                <span class="project-title" th:text="${projectDTO.projectName}">Project Title</span>
+              </div>
+              <div class="project-body">
+                <div class="progress-bar">
+                  <div class="progress" th:style="'width:' + (${projectDTO.completedTasksCount} / ${projectDTO.expectedCountTasks} * 100) + '%'"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="project-column completed">
+        <h2>Завершенные проекты</h2>
+        <ul class="project-list">
+          <li class="project" th:each="projectDTO : ${completedProjects}">
+            <a th:href="@{|/projects/details/${projectDTO.id}|}" class="project-link">
+              <div class="project-header">
+                <span class="project-title" th:text="${projectDTO.projectName}">Project Title</span>
+              </div>
+              <div class="project-body">
+                <div class="progress-bar">
+                  <div class="progress" th:style="'width:' + (${projectDTO.completedTasksCount} / ${projectDTO.expectedCountTasks} * 100) + '%'"></div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="developer-info">
+      Разработчик: Багаутдинов Марсель
+    </div>
+  </footer>
+</div>
+</body>
+</html>

@@ -21,13 +21,13 @@
   <nav class="nav">
     <ul>
       <li><a th:href="@{/main}">Dashboard</a></li>
-      <li><a href="#">Проекты</a></li>
-      <li><a href="#">Статистика</a></li>
+      <li><a th:href="@{/projects}">Проекты</a></li>
+      <li><a th:href="@{/statistics}">Статистика</a></li>
     </ul>
   </nav>
   <main class="main">
-    <div class="content">
-      <section class="user-details">
+    <div class="user-details">
+      <div class="details-text">
         <h2>Информация о пользователе</h2>
         <p><strong>Имя:</strong> <span th:text="${user.firstName}">Имя пользователя</span></p>
         <p><strong>Фамилия:</strong> <span th:text="${user.lastName}">Фамилия пользователя</span></p>
@@ -46,17 +46,13 @@
             <p th:text="${completedTasksCount}">0</p>
           </div>
         </div>
-      </section>
-      <section class="chart-section">
-        <h2>Диаграмма статусов задач</h2>
+      </div>
+      <div class="chart-container">
         <canvas id="taskStatusChart"></canvas>
-      </section>
+      </div>
     </div>
   </main>
   <footer class="footer">
-    <div class="project-name">
-      Разработка приложения для управления проектами
-    </div>
     <a href="/tasks/create" class="create-task-button">+</a>
     <div class="developer-info">
       Разработчик: Багаутдинов Марсель
@@ -64,35 +60,36 @@
   </footer>
 </div>
 <script>
-  const ctx = document.getElementById('taskStatusChart').getContext('2d');
-  const inProgressTasksCount = [[${inProgressTasksCount}]];
-  const underReviewTasksCount =[[${underReviewTasksCount}]];
-  const completedTasksCount = [[${completedTasksCount}]];
+  document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('taskStatusChart').getContext('2d');
+    var inProgressTasksCount = [[${inProgressTasksCount}]];
+    var underReviewTasksCount = [[${underReviewTasksCount}]];
+    var completedTasksCount = [[${completedTasksCount}]];
 
-  const taskStatusChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['В работе', 'На проверке', 'Завершено'],
-      datasets: [{
-        label: 'Статусы задач',
-        data: [inProgressTasksCount, underReviewTasksCount, completedTasksCount],
-        backgroundColor: ['#FDB634', '#2196F3', '#A0D061'],
-        borderColor: ['#FDB634', '#2196F3', '#A0D061'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Статусы задач'
+    var taskStatusChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['В работе', 'На проверке', 'Завершены'],
+        datasets: [{
+          data: [inProgressTasksCount, underReviewTasksCount, completedTasksCount],
+          backgroundColor: ['#FDB634', '#2196F3', '#A0D061'],
+          borderColor: ['#FDB634', '#2196F3', '#A0D061'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Статусы задач'
+          }
         }
-      }
-    },
+      },
+    });
   });
 </script>
 </body>

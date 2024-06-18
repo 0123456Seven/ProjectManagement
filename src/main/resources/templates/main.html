@@ -10,6 +10,15 @@
 <body>
 <div class="container">
     <header class="header">
+        <div class="project-selection">
+            <form th:action="@{/main}" method="get">
+                <label for="projectSelect">Выберите проект:</label>
+                <select id="projectSelect" name="projectId" onchange="this.form.submit()">
+                    <option value="">Все проекты</option>
+                    <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.projectName}" th:selected="${selectedProjectId == project.id}">Проект</option>
+                </select>
+            </form>
+        </div>
         <div class="user-profile">
             <span class="user-name" th:text="${userName}">Anonymous</span>
             <a href="#" class="profile-link">
@@ -20,8 +29,8 @@
     <nav class="nav">
         <ul>
             <li><a th:href="@{/main}">Dashboard</a></li>
-            <li><a href="#">Проекты</a></li>
-            <li><a href="#">Статистика</a></li>
+            <li><a th:href="@{/projects}">Проекты</a></li>
+            <li><a th:href="@{/statistics}">Статистика</a></li>
         </ul>
     </nav>
     <main class="main">
@@ -81,17 +90,14 @@
         </section>
     </main>
     <footer class="footer">
-        <div class="project-name">
-            Разработка приложения для управления проектами
+        <div class="project-progress-bar">
+            <div class="progress" th:style="'width:' + ${completionPercentage} + '%'"></div>
         </div>
         <a href="/tasks/create" class="create-task-button">+</a>
         <div class="developer-info">
             Разработчик: Багаутдинов Марсель
         </div>
     </footer>
-
-
-
 </div>
 </body>
 </html>

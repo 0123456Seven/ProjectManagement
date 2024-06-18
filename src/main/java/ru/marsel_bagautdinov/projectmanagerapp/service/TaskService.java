@@ -10,5 +10,6 @@ public interface TaskService {
     List<Task> getTasksByStatusAndUser(String status, Long userId);
     List<Task> getTasksByStatus(String status);
     void saveTask(Task task);
+    List<Task> getTasksByStatusAndProject(String status, Long projectId);
     // Другие методы интерфейса
 }

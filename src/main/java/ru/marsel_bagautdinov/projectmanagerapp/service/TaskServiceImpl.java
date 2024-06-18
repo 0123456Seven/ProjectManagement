@@ -53,4 +53,8 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> getTasksByStatus(String status) {
         return taskRepository.findByEventStatus_StatusName(status);
     }
+    @Override
+    public List<Task> getTasksByStatusAndProject(String status, Long projectId) {
+        return taskRepository.findByStatusAndProjectId(status, projectId);
+    }
 }

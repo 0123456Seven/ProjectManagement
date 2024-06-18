@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Создать задачу</title>
-  <link rel="stylesheet" th:href="@{/static/styles/create task.css}">
+  <link rel="stylesheet" th:href="@{/static/styles/createtask.css}">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -19,8 +19,8 @@
   <nav class="nav">
     <ul>
       <li><a th:href="@{/main}">Dashboard</a></li>
-      <li><a href="#">Проекты</a></li>
-      <li><a href="#">Статистика</a></li>
+      <li><a th:href="@{/projects}">Проекты</a></li>
+      <li><a th:href="@{/statistics}">Статистика</a></li>
     </ul>
   </nav>
   <main class="main">
@@ -50,9 +50,6 @@
     </div>
   </main>
   <footer class="footer">
-    <div class="project-name">
-      Разработка приложения для управления проектами
-    </div>
     <a href="/tasks/create" class="create-task-button">+</a>
     <div class="developer-info">
       Разработчик: Багаутдинов Марсель

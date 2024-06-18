@@ -16,6 +16,14 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "project_name")
     private String projectName;
+
+    @ManyToOne
+    @JoinColumn(name = "project_status_id", referencedColumnName = "id")
+    private EventStatus eventStatus;
+
+    @Column(name = "expected_count_tasks")
+    private Long expectedCountTasks;
 }

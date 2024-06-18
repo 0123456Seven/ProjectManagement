@@ -6,19 +6,17 @@
 
 body {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #1F1F24;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #1F1F24;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 900px;
     min-height: 100vh;
     background-color: #1F1F24;
 }
@@ -92,9 +90,10 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    background: #1F1F24;
 }
 
-.user-details {
+.project-details {
     display: flex;
     width: 100%;
     max-width: 900px;
@@ -122,23 +121,49 @@ body {
     margin: 15px 0;
 }
 
-.status {
-    font-weight: bold;
-    padding: 3px 6px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.в_работе {
+.details-text p.in-progress span {
     color: #FDB634;
 }
 
-.на_проверке {
+.details-text p.under-review span {
     color: #2196F3;
 }
 
-.Завершено {
+.details-text p.completed span {
     color: #A0D061;
+}
+
+.details-text select, .details-text button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.details-text select {
+    background-color: #3C3C44;
+    color: white;
+}
+
+.details-text button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.details-text button:hover {
+    background-color: #45A049;
+}
+
+.details-text .delete-button {
+    background-color: #E57373;
+}
+
+.details-text .delete-button:hover {
+    background-color: #EF5350;
 }
 
 .chart-container {
@@ -151,11 +176,11 @@ body {
 
 .chart-container canvas {
     width: 100%;
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 500px;
+    max-height: 500px;
 }
 
-.footer {
+footer {
     padding: 20px;
     background: #1F1F24;
     border-top: 1px solid white;
@@ -163,32 +188,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
-.footer .project-name, .footer .developer-info {
+footer .developer-info {
     color: #888888;
-}
-
-.create-task-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Центрирование кнопки */
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #888; /* Цвет кнопки */
-    border: 1px solid white;
-    color: white; /* Цвет текста */
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-
-.create-task-button:hover {
-    background-color: #1F1F24; /* Цвет кнопки при наведении */
 }

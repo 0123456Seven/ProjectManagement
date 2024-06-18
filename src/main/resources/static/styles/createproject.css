@@ -6,19 +6,18 @@
 
 body {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #1F1F24;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #1F1F24;
+    color: white;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 900px;
     min-height: 100vh;
     background-color: #1F1F24;
 }
@@ -94,65 +93,54 @@ body {
     padding: 20px;
 }
 
-.user-details {
-    display: flex;
+.create-project-form {
     width: 100%;
-    max-width: 900px;
+    max-width: 600px;
     background-color: #3C3C44;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.details-text {
-    flex: 1;
-    color: #DFDFE0;
-}
-
-.details-text h2 {
+.create-project-form h2 {
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
     border-bottom: 2px solid;
     padding-bottom: 10px;
 }
 
-.details-text p {
-    font-size: 18px;
-    margin: 15px 0;
+.create-project-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
 }
 
-.status {
-    font-weight: bold;
-    padding: 3px 6px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.в_работе {
-    color: #FDB634;
-}
-
-.на_проверке {
-    color: #2196F3;
-}
-
-.Завершено {
-    color: #A0D061;
-}
-
-.chart-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 20px;
-}
-
-.chart-container canvas {
+.create-project-form input, .create-project-form select, .create-project-form button {
+    display: block;
     width: 100%;
-    max-width: 400px;
-    max-height: 400px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.create-project-form input, .create-project-form select {
+    background-color: #2E2E36;
+    color: white;
+}
+
+.create-project-form button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-project-form button:hover {
+    background-color: #45A049;
 }
 
 .footer {
@@ -163,32 +151,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
-.footer .project-name, .footer .developer-info {
+.footer .developer-info {
     color: #888888;
-}
-
-.create-task-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Центрирование кнопки */
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #888; /* Цвет кнопки */
-    border: 1px solid white;
-    color: white; /* Цвет текста */
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-
-.create-task-button:hover {
-    background-color: #1F1F24; /* Цвет кнопки при наведении */
 }
