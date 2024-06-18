@@ -48,6 +48,9 @@ public class ProjectController {
 
     @GetMapping("/projects/create")
     public String showCreateProjectForm(Model model) {
+        model.addAttribute("statuses", eventStatusService.getAllStatuses().stream()
+                .filter(status -> "в работе".equals(status.getStatusName()) || "завершено".equals(status.getStatusName()))
+                .collect(Collectors.toList()));
         return "create-project";
     }
 
@@ -68,7 +71,7 @@ public class ProjectController {
         Project project = projectService.getProjectById(projectId);
         model.addAttribute("project", project);
         model.addAttribute("inProgressTasksCount", projectService.getTaskCountByStatus(projectId, 1L)); // ID статуса "в работе"
-        model.addAttribute("underReviewTasksCount", projectService.getTaskCountByStatus(projectId, 2L)); // ID статуса "на проверке"
+        model.addAttribute("underReviewTasksCount", projectService.getTaskCountByStatus(projectId, 2L)); // ID статуса "в работе"
         model.addAttribute("completedTasksCount", projectService.getTaskCountByStatus(projectId, 3L)); // ID статуса "завершено"
         return "project-details";
     }
@@ -84,6 +87,7 @@ public class ProjectController {
         projectService.deleteProject(projectId);
         return "redirect:/projects";
     }
+
 
     public static class ProjectDTO {
         private Project project;
