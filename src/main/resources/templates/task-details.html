@@ -34,8 +34,9 @@
                 <form action="#" th:action="@{/tasks/updateStatus}" method="post">
                     <input type="hidden" name="taskId" th:value="${task.id}"/>
                     <select name="status">
-                        <option value="в работе">В работе</option>
-                        <option value="на проверке">На проверке</option>
+                        <option value="в работе">в работе</option>
+                        <option value="на проверке">на проверке</option>
+                        <option value="завершено">завершено</option>
                     </select>
                     <button type="submit">Изменить статус</button>
                 </form>
