@@ -195,8 +195,9 @@ body {
     border-top: 1px solid white;
     flex-shrink: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .project-progress-bar {
@@ -226,6 +227,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 0 auto;
 }
 
 .create-task-button:hover {
@@ -234,6 +236,7 @@ body {
 
 .developer-info {
     color: #888888;
+    margin-left: auto;
 }
 
 .completed {
